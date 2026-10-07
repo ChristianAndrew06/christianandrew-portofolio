@@ -1,0 +1,137 @@
+/* Project detail pages. Shared colors, typography and navigation: ../style.css. */
+.detail-hero{padding:62px 7% 57px;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:65px}
+.detail-intro{min-width:0}
+.detail-intro .subpage-kicker{flex-wrap:wrap;font-size:12px;letter-spacing:.09em}
+.detail-intro h1{font-size:clamp(48px,5.8vw,78px);line-height:1.1;letter-spacing:-3px;margin:0 0 25px;overflow-wrap:anywhere}
+.detail-intro h1>span{color:var(--accent)}
+.detail-intro h2{font-size:clamp(25px,2.5vw,36px);line-height:1.35;letter-spacing:-1px;margin-bottom:22px}
+.detail-description{font-size:16px;line-height:1.9;color:var(--muted);margin:0 0 24px}
+.project-stage{display:inline-block;padding:7px 12px;border:1px solid #d7dae5;font-size:12px;letter-spacing:.08em;color:#676c79}
+.detail-cover{min-height:410px;aspect-ratio:1/1.05;padding:32px;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start}
+.detail-cover .cover-top{font-size:12px;gap:18px;line-height:1.65}
+.detail-cover .nurture-word{font-size:clamp(60px,6.5vw,88px);margin-top:auto;letter-spacing:-5px}
+.detail-cover .pause-word{font-size:clamp(56px,5.5vw,80px);margin-top:auto;letter-spacing:-4px}
+.detail-cover .tropinata-word{font-size:clamp(62px,6vw,89px);margin-top:auto;letter-spacing:-5px}
+.detail-cover .cover-tagline{position:static;display:block;font-size:18px;margin-top:23px;line-height:1.6}
+.detail-cover-credit{font-size:12px;line-height:1.7;letter-spacing:.07em;opacity:.75;margin-top:auto;padding-top:35px}
+/* Shared Nurture image treatment across every project detail cover */
+.detail-cover {
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  padding:0;
+  cursor:default;
+}
+.detail-cover-image {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  display:block;
+  z-index:0;
+  transition:transform .6s cubic-bezier(.2,.7,.2,1), filter .35s ease;
+}
+.detail-cover::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:linear-gradient(180deg, rgba(255,255,255,.82) 0%, rgba(255,255,255,.02) 38%, rgba(20,25,35,.08) 100%);
+  pointer-events:none;
+  transition:opacity .35s ease;
+}
+.detail-cover-overlay {
+  position:relative;
+  z-index:2;
+  width:100%;
+  height:100%;
+  padding:32px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:flex-start;
+  box-sizing:border-box;
+}
+.detail-cover:hover .detail-cover-image {
+  transform:scale(1.045);
+  filter:saturate(1.03);
+}
+.detail-cover:hover::after { opacity:.72; }
+.detail-cover-overlay .cover-top { width:100%; }
+.detail-cover-overlay .detail-cover-credit { margin-top:auto; }
+
+.project-facts{margin:0 7%;padding:27px 0;display:grid;grid-template-columns:.7fr 1fr 1.2fr .8fr;gap:28px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.project-facts dt{font-size:12px;letter-spacing:.1em;color:var(--muted);margin-bottom:7px}
+.project-facts dd{font-size:15px;line-height:1.65;margin:0;font-weight:500}
+.detail-overview{padding:77px 7%;display:grid;grid-template-columns:.85fr 1.35fr;gap:75px}
+.detail-overview .eyebrow{color:var(--muted);font-size:12px}
+.detail-overview h2{margin:0}
+.overview-copy>p{color:var(--muted);font-size:17px;line-height:1.85;margin:0 0 28px}
+.overview-copy h3{font-size:21px;letter-spacing:-.6px;margin:31px 0 12px}
+.overview-copy>p:last-of-type{margin-bottom:0}
+.overview-copy .button{margin-top:26px}
+.project-focus{background:#fafaff;padding:65px 7% 75px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.project-focus .section-heading{margin-bottom:32px}
+.focus-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px;margin-top:43px}
+.focus-card{border-top:1px solid #d6d9e4;padding-top:25px}
+.focus-number{font-size:13px;color:var(--accent)}
+.focus-card h3{font-size:21px;line-height:1.4;letter-spacing:-.6px;margin:20px 0 13px}
+.focus-card p{font-size:16px;line-height:1.9;color:var(--muted);margin-bottom:0}
+.project-pagination{padding:43px 7%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:28px}
+.project-pagination a{display:flex;flex-direction:column;gap:6px}
+.project-pagination a:hover{color:var(--accent)}
+.project-pagination span{font-size:12px;letter-spacing:.09em;color:var(--muted)}
+.project-pagination strong{font-family:var(--font-heading);font-size:22px;font-weight:650;display:flex;align-items:center;gap:13px}
+.project-pagination .all-projects{padding:10px 15px;border:1px solid var(--line);font-size:14px}
+.project-pagination .project-next{align-items:flex-end;text-align:right}
+
+
+/* Nurture project cover image */
+.cover-nurture{
+  position:relative;
+  overflow:hidden;
+  padding:0;
+  background:#fff;
+  display:block;
+}
+
+.nurture-cover-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  display:block;
+}
+
+.nurture-cover-overlay{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  padding:32px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  pointer-events:none;
+}
+
+.cover-nurture .cover-top{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  color:#344054;
+}
+
+.cover-nurture .detail-cover-credit{
+  color:#344054;
+  opacity:.72;
+  margin-top:0;
+  padding-top:35px;
+}
+
+@media(max-width:1100px){.detail-hero{gap:35px;padding-top:48px}.detail-intro h1{font-size:58px}.detail-cover{min-height:380px;padding:27px}.detail-cover .pause-word{font-size:57px}.detail-cover .nurture-word{font-size:65px}.detail-overview{gap:45px}.project-facts{gap:20px}.focus-grid{gap:24px}}
+@media(max-width:800px){.detail-hero{grid-template-columns:1fr;gap:34px}.detail-intro h1{font-size:64px}.detail-cover{min-height:375px;aspect-ratio:auto;width:100%;padding:0}.detail-cover .nurture-word{font-size:80px;margin-top:34px}.detail-cover .pause-word{font-size:75px;margin-top:34px}.detail-cover .tropinata-word{font-size:78px;margin-top:26px}.detail-cover .cover-tagline{font-size:18px}.detail-cover-credit{padding-top:25px}.project-facts{grid-template-columns:1fr 1fr;gap:25px}.detail-overview{grid-template-columns:1fr;gap:28px;padding-top:56px;padding-bottom:56px}.detail-overview h2 br{display:none}.focus-grid{grid-template-columns:1fr;gap:30px}.focus-card{padding-top:23px}.focus-card h3{margin-top:12px}.project-focus{padding-top:54px;padding-bottom:56px}.project-pagination{gap:15px}.project-pagination strong{font-size:18px}}
+@media(max-width:480px){.detail-hero{padding-top:36px;padding-bottom:36px}.detail-intro .subpage-kicker{letter-spacing:.06em;font-size:12px}.detail-intro h1{font-size:52px;letter-spacing:-2px}.detail-intro h2{font-size:28px}.detail-cover{min-height:340px;padding:0}.detail-cover .nurture-word{font-size:66px}.detail-cover .pause-word{font-size:59px;letter-spacing:-3px}.detail-cover .tropinata-word{font-size:68px}.project-facts dd{font-size:14px}.overview-copy>p{font-size:16px}.project-pagination{grid-template-columns:1fr 1fr;gap:25px 12px;padding-top:31px;padding-bottom:31px}.project-pagination .all-projects{grid-column:1/-1;grid-row:2;align-items:center;justify-self:center}.project-pagination strong{font-size:18px}.project-pagination span{font-size:12px;letter-spacing:.02em}}

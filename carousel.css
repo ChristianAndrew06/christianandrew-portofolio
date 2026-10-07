@@ -1,0 +1,69 @@
+/* Shared horizontal galleries. Adding a card does not require changing the slider. */
+.content-carousel{min-width:0}
+.carousel-track{
+  --carousel-gap:24px;
+  display:grid;
+  grid-template-columns:none;
+  grid-auto-flow:column;
+  grid-auto-columns:calc((100% - var(--carousel-gap) * 2) / 3);
+  gap:var(--carousel-gap);
+  overflow-x:auto;
+  overflow-y:hidden;
+  overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  scrollbar-width:thin;
+  scrollbar-color:#becdd8 transparent;
+  padding:6px 0 12px;
+  cursor:grab;
+}
+.carousel-track::-webkit-scrollbar{height:4px}
+.carousel-track::-webkit-scrollbar-thumb{background:#becdd8;border-radius:8px}
+.carousel-track>article{min-width:0;scroll-snap-align:start}
+.carousel-track:focus-visible{outline:2px solid var(--accent);outline-offset:5px;border-radius:4px}
+.carousel-track.is-dragging{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto;user-select:none}
+.carousel-track.is-dragging *{cursor:grabbing;user-select:none}
+.carousel-track.is-dragging .project-cover{transform:none}
+.carousel-track .project-cover{height:100%;min-height:285px}
+.carousel-track .project-cover:focus-visible{outline-offset:-5px}
+.carousel-footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:20px}
+.carousel-hint{font-size:13px;line-height:1.6;color:#65798b;margin:0}
+.carousel-controls{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.carousel-position{font-size:13px;letter-spacing:.04em;font-variant-numeric:tabular-nums;color:var(--ink);min-width:85px;text-align:right;margin-right:10px}
+.carousel-button{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid #c9d5de;border-radius:50%;background:transparent;color:var(--ink);transition:background .2s,color .2s,border-color .2s}
+.carousel-button:hover:not(:disabled){background:var(--ink);border-color:var(--ink);color:#fff}
+.carousel-button:disabled{opacity:.32;cursor:default}
+.carousel-button .icon{width:19px;height:19px}
+.carousel-button[data-carousel-prev] .icon{transform:rotate(180deg)}
+.certificate-grid.carousel-track .certificate-preview{min-height:0;aspect-ratio:1.414/1;padding:15px}
+.certificate-grid.carousel-track .certificate-empty{padding:12px;gap:5px}
+.certificate-grid.carousel-track .certificate-empty>.icon{width:32px;height:32px;margin-bottom:3px}
+.certificate-grid.carousel-track .certificate-empty>span{font-size:14px}
+.certificate-grid.carousel-track .certificate-empty>small{font-size:12px}
+.certificate-grid.carousel-track .certificate-caption{padding:20px;gap:12px}
+.certificate-grid.carousel-track .certificate-caption h3{font-size:20px;line-height:1.35;margin:8px 0 6px}
+.certificate-grid.carousel-track .certificate-caption p{font-size:13px}
+.certificate-grid.carousel-track .certificate-type{font-size:11px;letter-spacing:.06em}
+.certificate-grid.carousel-track .certificate-image{padding:12px}
+.certificate-grid.carousel-track .certificate-zoom{font-size:11px;padding:6px 8px;bottom:9px;right:9px}
+.certificate-grid.carousel-track .certificate-preview:focus-visible{outline-offset:-5px;z-index:1}
+.cover-project-four{background:#dce7ea;color:#34566a}
+.cover-project-five{background:#eee2d5;color:#79543b}
+.example-project-word{font-family:var(--font-display);font-size:clamp(38px,3.8vw,54px);line-height:1.1;letter-spacing:-1.5px;margin-top:34px}
+@media(max-width:1000px){
+  .carousel-track{--carousel-gap:22px;grid-auto-columns:calc((100% - var(--carousel-gap)) / 2)}
+}
+@media(max-width:600px){
+  .carousel-track{--carousel-gap:16px;grid-auto-columns:88%}
+  .carousel-track .project-cover{min-height:290px;padding:22px}
+  .carousel-footer{align-items:flex-start;flex-direction:column;gap:12px;padding-top:16px}
+  .carousel-controls{align-self:flex-end}
+  .carousel-position{font-size:12px}
+  .certificate-grid.carousel-track .certificate-caption{padding:18px}
+  .certificate-grid.carousel-track .certificate-caption h3{font-size:19px}
+  .example-project-word{font-size:45px}
+}
+@media(prefers-reduced-motion:reduce){
+  .carousel-track{scroll-behavior:auto}
+  .carousel-button{transition:none}
+}
