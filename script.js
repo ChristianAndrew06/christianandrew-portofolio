@@ -149,6 +149,44 @@ if (sections.length) window.addEventListener('scroll', () => {
 }, { passive: true });
 updateActiveNav();
 
+// Thin reading-progress line at the top of the page.
+const readingProgressBar = document.querySelector('#reading-progress-bar');
+if (readingProgressBar) {
+  let progressTicking = false;
+  const updateReadingProgress = () => {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+    readingProgressBar.style.transform = `scaleX(${progress})`;
+    progressTicking = false;
+  };
+  window.addEventListener('scroll', () => {
+    if (progressTicking) return;
+    progressTicking = true;
+    window.requestAnimationFrame(updateReadingProgress);
+  }, { passive: true });
+  updateReadingProgress();
+}
+
+// Gentle section reveals; the content remains visible when reduced motion is preferred.
+const revealTargets = document.querySelectorAll(
+  '.section-heading, .about-layout, .section-intro, .content-carousel, .social-intro, .social-grid-six'
+);
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -28px 0px' });
+  revealTargets.forEach((element, index) => {
+    element.classList.add('scroll-reveal');
+    element.style.setProperty('--reveal-delay', `${(index % 3) * 75}ms`);
+    revealObserver.observe(element);
+  });
+}
+
 function safeExternalUrl(value) {
   try {
     const parsed = new URL(value);
@@ -178,11 +216,11 @@ function contactDestination(network, value) {
 }
 
 const contactLabels = {
-  linkedin: { name: 'LinkedIn', action: 'Lihat profil ↗' },
-  whatsapp: { name: 'WhatsApp', action: 'Kirim pesan ↗' },
-  instagram: { name: 'Instagram', action: 'Lihat profil ↗' },
-  email: { name: 'email', action: 'Kirim email ↗' },
-  cv: { name: 'CV di Google Drive', action: 'Lihat CV ↗' },
+  linkedin: { name: 'LinkedIn', action: 'See Profile ↗' },
+  whatsapp: { name: 'WhatsApp', action: 'Send Message ↗' },
+  instagram: { name: 'Instagram', action: 'See Profile ↗' },
+  email: { name: 'email', action: 'Send Email ↗' },
+  cv: { name: 'CV di Google Drive', action: 'Curriculum Vitae ↗' },
 };
 
 Object.entries(portfolio.social).forEach(([network, value]) => {
