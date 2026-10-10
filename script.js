@@ -10,10 +10,18 @@ const portfolio = {
     whatsapp: 'https://wa.me/08132091499', // Nomor internasional (628...) atau tautan https://wa.me/...
     instagram: 'https://www.instagram.com/christianandrw_',
     email: 'christianandrewwork@gmail.com', // Alamat email kamu; awalan mailto: tidak wajib.
-    cv: 'https://drive.google.com/file/d/1biwi5T2sjn5U1WM-gTF2X_V9fm8NVjOL/view?usp=sharing', // Tautan berbagi CV dari Google Drive.
-    github: '', // Tautan profil GitHub kamu.
+    cv: 'https://drive.google.com/file/d/1rG5XYuwk1eM_FE4DwGtsRD_S-iAun_uC/view?usp=sharing', // Tautan berbagi CV dari Google Drive.
   },
   certificates: {
+    juara1: {
+      image: 'assets/cert/11.png', // Contoh: 'assets/cert/sertifikat-islab.jpg'
+    },
+    juara1it: {
+      image: 'assets/cert/.jpg', // Contoh: 'assets/cert/sertifikat-islab.jpg'
+    },
+    juara2: {
+      image: 'assets/cert/12.png', // Contoh: 'assets/cert/sertifikat-islab.jpg'
+    },
     islab: {
       image: 'assets/cert/Aslab.jpg', // Contoh: 'assets/cert/sertifikat-islab.jpg'
     },
@@ -26,6 +34,9 @@ const portfolio = {
     pembicara: {
       image: 'assets/cert/pembicara.jpeg', // Gambar untuk kartu Sertifikat 04.
     },
+    finalist: {
+      image: 'assets/cert/13.png', // Gambar untuk kartu Sertifikat 04.
+    },
     stat: {
       image: 'assets/cert/stat.jpg', // Gambar untuk kartu Sertifikat 04.
     },
@@ -33,15 +44,59 @@ const portfolio = {
       image: 'assets/cert/ksn.jpg', // Gambar untuk kartu Sertifikat 04.
     },
   },
+  /*
+   * DIRECT PROJECT LINKS
+   * Isi URL yang sudah kamu publish. Tombol akan muncul otomatis
+   * di halaman detail project.
+   *
+   * Contoh:
+   * nurture: {
+   *   figma: 'https://www.figma.com/design/xxxxx/...',
+   *   caseStudy: ''
+   * }
+   */
   projectLinks: {
-    nurture: '',
-    pause: '',
-    tropinata: '',
-    project04: '',
-    project05: '',
+    nurture: {
+      figma: 'https://www.figma.com/design/mKQNG02gWd7HUdoWvnCSRU/Nurture?node-id=1616-2222&t=dM3oMPRMw9odpeZt-1',
+      caseStudy: '',
+    },
+    pause: {
+      figma: 'https://www.figma.com/design/FirIQy2k7T1r7m1OBfak7J/UI-UX_Hackfest-2026_Raja-Gukguk-KMG_SkillFuel_Figma?node-id=0-1&t=QJDgDLNmcRwCuivA-1',
+      caseStudy: '',
+    },
+    tropinata: {
+      figma: 'https://www.figma.com/design/LMWD7ZlI5A7LHMt3RlPoJI/Growey-?node-id=2412-2872&t=mRg4lrVlLzlf5zYR-1',
+      caseStudy: '',
+    },
+    project04: {
+      figma: 'https://www.figma.com/design/YoWL52UdHKwUhlBni21FG5/SAUL?node-id=2-2&t=IzSv389q7cFDZkFw-1',
+      caseStudy: '',
+    },
   },
 };
 
+
+/* First-visit portfolio intro */
+const portfolioIntro = document.querySelector('#portfolio-intro');
+if (portfolioIntro) {
+  const introSeenKey = 'andrewPortfolioIntroSeen_v2';
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let hasSeenIntro = false;
+  try {
+    hasSeenIntro = sessionStorage.getItem(introSeenKey) === '1';
+  } catch { /* Continue without persistence. */ }
+
+  if (hasSeenIntro || reducedMotion) {
+    portfolioIntro.remove();
+  } else {
+    try { sessionStorage.setItem(introSeenKey, '1'); } catch { /* Non-persistent mode. */ }
+    window.setTimeout(() => {
+      portfolioIntro.classList.add('is-hidden');
+      document.body.classList.add('portfolio-entered');
+      window.setTimeout(() => portfolioIntro.remove(), 1000);
+    }, 2250);
+  }
+}
 const menuToggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('#main-nav');
 const navLinks = [...document.querySelectorAll('.nav-link')];
@@ -128,7 +183,6 @@ const contactLabels = {
   instagram: { name: 'Instagram', action: 'Lihat profil ↗' },
   email: { name: 'email', action: 'Kirim email ↗' },
   cv: { name: 'CV di Google Drive', action: 'Lihat CV ↗' },
-  github: { name: 'GitHub', action: 'Lihat profil ↗' },
 };
 
 Object.entries(portfolio.social).forEach(([network, value]) => {

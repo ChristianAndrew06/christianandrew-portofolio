@@ -40,3 +40,38 @@ Lokasi gambar sertifikat diatur pada `portfolio.certificates` di file yang sama,
 Hero memenuhi lebar layar dan setidaknya tinggi layar yang tersisa di bawah navigasi; pada layar kecil konten dapat memanjang agar teks tetap terbaca. Semua halaman memakai `theme.css`. Lokasi foto pribadi ada di `portfolio.profilePhoto`; jika kosong, visual monogram CA tetap digunakan. Font web memakai Google Fonts dengan font sistem sebagai cadangan.
 
 Arsip tidak memerlukan backend atau proses build. Semua jalur file relatif terhadap folder masing-masing.
+
+## Direct project links
+
+Edit `script.js` under `portfolio.projectLinks` to add your published project URLs:
+
+```js
+projectLinks: {
+  nurture: {
+    figma: 'https://www.figma.com/design/...',
+    caseStudy: '',
+  },
+  pause: {
+    figma: 'https://www.figma.com/design/...',
+    caseStudy: '',
+  },
+  tropinata: {
+    figma: 'https://www.figma.com/design/...',
+    caseStudy: '',
+  },
+  project04: {
+    figma: 'https://www.figma.com/design/...',
+    caseStudy: '',
+  },
+},
+```
+
+Only links with valid `http`/`https` URLs are displayed on the project detail page.
+
+## Portfolio intro
+
+The homepage now shows a short first-visit intro animation. It runs once per browser tab/session and respects `prefers-reduced-motion`.
+
+## Contact cleanup
+
+GitHub has been removed from the Social Media contact cards and footer.
