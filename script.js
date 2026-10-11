@@ -13,6 +13,9 @@ const portfolio = {
     cv: 'https://drive.google.com/file/d/1rG5XYuwk1eM_FE4DwGtsRD_S-iAun_uC/view?usp=sharing', // Tautan berbagi CV dari Google Drive.
   },
   certificates: {
+    erp1: {
+      image: 'assets/cert/sap.png', // Contoh: 'assets/cert/sertifikat-islab.jpg'
+    },
     juara1: {
       image: 'assets/cert/11.png', // Contoh: 'assets/cert/sertifikat-islab.jpg'
     },
