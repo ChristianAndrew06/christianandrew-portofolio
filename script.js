@@ -10,7 +10,7 @@ const portfolio = {
     whatsapp: 'https://wa.me/08132091499', // Nomor internasional (628...) atau tautan https://wa.me/...
     instagram: 'https://www.instagram.com/christianandrw_',
     email: 'christianandrewwork@gmail.com', // Alamat email kamu; awalan mailto: tidak wajib.
-    cv: 'https://drive.google.com/file/d/1rG5XYuwk1eM_FE4DwGtsRD_S-iAun_uC/view?usp=sharing', // Tautan berbagi CV dari Google Drive.
+    cv: 'https://drive.google.com/file/d/1H3wv-FRrU2_VVNvYHg7daE2w4ISodq-B/view?usp=sharing', // Tautan berbagi CV dari Google Drive.
   },
   certificates: {
     erp1: {
