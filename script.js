@@ -20,7 +20,7 @@ const portfolio = {
       image: 'assets/cert/11.png', // Contoh: 'assets/cert/sertifikat-islab.jpg'
     },
     juara1it: {
-      image: 'assets/cert/.jpg', // Contoh: 'assets/cert/sertifikat-islab.jpg'
+      image: 'assets/cert/ittoday.png', // Contoh: 'assets/cert/sertifikat-islab.jpg'
     },
     juara2: {
       image: 'assets/cert/12.png', // Contoh: 'assets/cert/sertifikat-islab.jpg'
